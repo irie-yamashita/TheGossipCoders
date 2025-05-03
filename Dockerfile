@@ -17,6 +17,6 @@ COPY . .
 EXPOSE 3000
 
 # 7. Comando de inicio
-CMD [\"npm\", \"start\"]
+CMD ["npm", "start"]
 
 
