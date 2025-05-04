@@ -6,23 +6,23 @@
     <title>Document</title>
 </head>
 <body>
-    <ul id="usuarios-lista"></ul>
+    <ul id="artistas-lista"></ul>
 </body>
 </html>
 
 <script>
     // Hacer fetch a la API y mostrar los datos
-    fetch('/api/usuarios')
+    fetch('/api/artists')
       .then(response => response.json())
       .then(data => {
-        const lista = document.getElementById('usuarios-lista');
-        data.forEach(usuario => {
+        const lista = document.getElementById('artistas-lista');
+        data.forEach(artista => {
           const item = document.createElement('li');
-          item.textContent = `${usuario.nombre} (${usuario.email})`;
+          item.innerHTML = `Nombre artístico: ${artista.stage_name } <br>Nombre real:${artista.real_name}<br>Año debut: ${artista.debut_year} ...`;
           lista.appendChild(item);
         });
       })
       .catch(error => {
-        console.error('Error al obtener los usuarios:', error);
+        console.error('Error al obtener los artistas:', error);
       });
 </script>

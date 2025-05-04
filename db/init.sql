@@ -189,10 +189,11 @@ INSERT INTO users (name, email, password, registration_date) VALUES
 ('Miguel Torres', 'miguel@example.com', 'hashedpwd4', '2023-03-15'),
 ('Sofía León', 'sofia@example.com', 'hashedpwd5', '2023-03-20');
 
+
 -- REPRODUCCIONES
 INSERT INTO plays (song_id, user_id, play_date) VALUES
-(1, '2023-04-01'),
-(1, '2023-04-02'),
-(2, '2023-04-02'),
-(3, '2023-04-03'),
-(4, '2023-04-04');
+(1, 1, '2023-04-01'),
+(2, 1, '2023-04-02'),
+(3, 2, '2023-04-02'),
+(4, 3, '2023-04-03'),
+(5, 4, '2023-04-04');
