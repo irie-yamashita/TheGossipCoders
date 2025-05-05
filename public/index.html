@@ -12,7 +12,7 @@
 <body>
     <header>
         <nav>
-            <h2>El universo musical</h2>
+            <h2>El Universo Musical</h2>
             <a href="index.html">Home</a>
             <a href="sobreNosotros.html">About us</a>
             <a href="soporte.html">Soporte</a>
@@ -20,73 +20,27 @@
             <a href="log_in.html">log in</a>
         </nav>
     </header>
-    <section id="artitas">
+    <div id="portada" class="column">
+            <p>El</p>
+            <p>Universo Musical</p>
+            <strong>...</strong>
+            <button>Get Started</button>
+    </div>
+    <section id="artistas">
         <h2>Artitas más escuchados</h2>
-        <div>
-            <h3>Yeah Yeah Yeahs</h3>
-            <a href="detalle_artistas.html"><img src="img/yeah_yeah_yeahs_art.jpg"></a>
-        </div>
-        <div>
-            <h3>Nombre</h3>
-            <a href="detalle_artistas.html"><img></a>
-        </div>
-        <div>
-            <h3>Nombre</h3>
-            <a href="detalle_artistas.html"><img></a>
-        </div>
-        <div>
-            <h3>Nombre</h3>
-            <a href="detalle_artistas.html"><img></a>
-        </div>
-        <div>
-            <h3>Nombre</h3>
-            <a href="detalle_artistas.html"><img></a>
+        <div id="artistas_container" class="container">
+
         </div>
     </section>
     <section id="canciones">
         <h2>Canciones populares</h2>
-        <div>
-            <h3>Maps</h3>
-            <a href="detalle_cancion.html"><img src="img/mapsCancion.jpg"></a>
-        </div>
-        <div>
-            <h3>Maps</h3>
-            <a href="detalle_cancion.html"><img src=""></a>
-        </div>
-        <div>
-            <h3>Nombre</h3>
-            <a href="detalle_cancion.html"><img src=""></a>
-        </div>
-        <div>
-            <h3>Nombre</h3>
-            <a href="detalle_cancion.html"><img src=""></a>
-        </div>
-        <div>
-            <h3>Nombre</h3>
-            <a href="detalle_cancion.html"><img src=""></a>
+        <div id="canciones_container" class="container">
+
         </div>
     </section>
     <section id="albumes">
         <h2>Álbumes recomendados</h2>
-        <div>
-            <h3>Fever To Tell</h3>
-            <img src="img/Yeah_Yeah_Yeahs_-_Fever_to_Tell.png">
-        </div>
-        <div>
-            <h3>Nombre</h3>
-            <img src="">
-        </div>
-        <div>
-            <h3>Nombre</h3>
-            <img src="">
-        </div>
-        <div>
-            <h3>Nombre</h3>
-            <img src="">
-        </div>
-        <div>
-            <h3>Nombre</h3>
-            <img src="">
+        <div id="albumes_container" class="container center">
         </div>
     </section>
     <footer>
@@ -102,3 +56,111 @@
     </footer>
 </body>
 </html>
+
+<script>
+
+// Datos artistas
+fetch('/api/artists?limit=6')
+  .then(response => response.json())
+  .then(data => {
+    const lista = document.getElementById('artistas_container');
+    data.forEach(artista => {
+            // Crear elementos
+      const div = document.createElement('div');
+      const h3 = document.createElement('h3');
+      const a = document.createElement('a');
+      const img = document.createElement('img');
+
+      div.classList.add("quadrat");
+      // Asignar contenido
+      h3.textContent = artista.stage_name;
+      a.href = `detalle_artistas.html?id=${artista.id}`; // puedes agregar ?id=artista.id si quieres que sea dinámico
+      img.src = artista.photo_url;
+      img.alt = artista.stage_name;
+
+      // Construir estructura
+      a.appendChild(img);
+      div.appendChild(h3);
+      div.appendChild(a);
+      lista.appendChild(div);
+    });
+  })
+  .catch(error => {
+    console.error('Error al obtener los artistas:', error);
+  });
+
+  // Datos canciones
+  fetch('/api/songs?limit=5')
+  .then(response => response.json())
+  .then(data => {
+    const lista = document.getElementById('canciones_container');
+
+    data.forEach((cancion, index) => {
+      // Crear el contenedor principal (clicable)
+      const div = document.createElement('div');
+      div.classList.add("quadrat");
+      div.style.cursor = 'pointer';
+      div.onclick = () => {
+        window.location.href = `detalle_cancion.html?id=${cancion.id}`;
+      };
+
+      // Enumeración y título
+      const posicion = document.createElement('p');
+      posicion.textContent = `${index + 1}`;
+
+      const h3 = document.createElement('h3');
+      h3.textContent = `${cancion.title}`;
+
+      // Parrafo con play_count
+      const p = document.createElement('p');
+      p.innerHTML = `Reproducciones: <strong>${cancion.play_count.toLocaleString('es-ES')}</strong>`;
+
+      // Construir estructura
+      div.appendChild(posicion);
+      div.appendChild(h3);
+      div.appendChild(p);
+      lista.appendChild(div);
+    });
+  })
+  .catch(error => {
+    console.error('Error al obtener las canciones:', error);
+  });
+
+
+  //Datos álbumes
+  fetch('/api/albums?limit=5')
+  .then(response => response.json())
+  .then(data => {
+    const lista = document.getElementById('albumes_container');
+
+    data.forEach((album, index) => {
+      // Crear elementos
+      const div = document.createElement('div');
+      div.classList.add("rectangle");
+      const h3 = document.createElement('h3');
+      const img = document.createElement('img');
+      const p = document.createElement('p');
+
+      // Asignar contenido
+      h3.textContent = `${index + 1}. ${album.name}`;
+      img.src = album.photo_url || 'img/default_album.png'; // fallback si no hay imagen
+      img.alt = album.name;
+
+      // Formatear fecha de lanzamiento
+      const fecha = new Date(album.release_date);
+      p.textContent = `Publicado el: ${fecha.toLocaleDateString('es-ES')}`;
+      p.classList.add('color'); // por si quieres aplicar estilos con esta clase
+
+      // Estructura
+      div.appendChild(h3);
+      div.appendChild(img);
+      div.appendChild(p);
+      lista.appendChild(div);
+    });
+  })
+  .catch(error => {
+    console.error('Error al obtener los álbumes:', error);
+  });
+
+
+</script>

@@ -66,7 +66,7 @@ router.get('/artists', async (req, res) => {
 
 router.get('/albums', async (req, res) => {
   // Obtener los parámetros de la consulta (id, limit, name)
-  const { id, limit, name } = req.query; // Usamos req.query para obtener los parámetros de consulta
+  const { id, limit, name, artist_id} = req.query; // Usamos req.query para obtener los parámetros de consulta
 
   try {
     let result;
@@ -80,6 +80,8 @@ router.get('/albums', async (req, res) => {
     } else if (limit) {
       // Si se pasa 'limit', realizar la consulta con límite
       result = await pool.query('SELECT * FROM albums ORDER BY release_date DESC LIMIT $1', [limit]);
+    } else if(artist_id){
+      result = await pool.query('SELECT * FROM albums WHERE artist_id = $1', [artist_id]);
     } else {
       // Si no se pasa ni 'id', 'name', ni 'limit', devolver todos los álbumes
       result = await pool.query('SELECT * FROM albums');
@@ -99,7 +101,7 @@ router.get('/albums', async (req, res) => {
 
 
 router.get('/songs', async (req, res) => {
-  const { id, limit, title } = req.query; // Usamos req.query para obtener los parámetros de consulta
+  const { id, limit, title, artist_id} = req.query; // Usamos req.query para obtener los parámetros de consulta
 
   try {
     let result;
@@ -113,6 +115,8 @@ router.get('/songs', async (req, res) => {
     }else if (title) {
       // Si se pasa 'name', realizar la consulta por nombre del álbum
       result = await pool.query('SELECT * FROM songs WHERE title ILIKE $1', [`%${title}%`]); // Usamos ILIKE para búsqueda insensible a mayúsculas
+    } else if(artist_id){
+      result = await pool.query('SELECT * FROM songs WHERE artist_id = $1', [artist_id]);
     } else {
         // Realizamos la consulta en la base de datos usando el 'id'
         result = await pool.query('SELECT * FROM songs');

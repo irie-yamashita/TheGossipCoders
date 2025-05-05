@@ -5,6 +5,17 @@
     box-sizing: border-box;
 }
 
+.row {
+    display: flex;
+}
+.center {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+strong {
+    color: #00ffe5;
+}
 body {
     background: #121212;
     color: #ffffff;
