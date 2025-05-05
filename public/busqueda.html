@@ -18,14 +18,19 @@
   <main id="container">
     <h1>Busca tus artistas o canciones favoritas</h1>
     <input type="text" id="search" placeholder="Escribe aquí...">
+    <br>
+    <label for="filtro-select">FILTROS</label><br>
+    <select id="filtro-select">
+      <option value="">Buscador general</option>
+      <option value="artist">Artistas</option>
+      <option value="song">Canciones</option>
+      <option value="album">Álbumes</option>
+    </select>
     <ul id="resultados"></ul>
 
+      
     <div id="recomendados">
-      <h2>Recomendados</h2><br>
-      <section><a href="detalle_cancion.html"><h3>Nombre 1</h3></a></section>
-      <section><a href="detalle_cancion.html"><h3>Nombre 2</h3></a></section>
-      <section><a href="detalle_cancion.html"><h3>Nombre 3</h3></a></section>
-      <section><a href="detalle_cancion.html"><h3>Nombre 4</h3></a></section>
+        <h2>Recomendados</h2><br>
     </div>
   </main>
 

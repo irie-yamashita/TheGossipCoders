@@ -159,6 +159,63 @@ router.get('/plays', async (req, res) => {
   }
 });
 
+router.get('/buscar', async (req, res) => {
+  const { q, filtro } = req.query;
+
+  if (!q) {
+    return res.status(400).json({ error: 'Parámetro de búsqueda "q" requerido.' });
+  }
+
+  const termino = `%${q}%`;
+
+  try {
+    let resultados = [];
+
+    // Solo ARTISTAS
+    if (filtro === 'artist') {
+      const artistas = await pool.query(
+        'SELECT id, stage_name AS nombre FROM artists WHERE stage_name ILIKE $1',
+        [termino]
+      );
+      resultados = artistas.rows.map(a => ({ tipo: 'artista', ...a }));
+
+    // Solo CANCIONES
+    } else if (filtro === 'song') {
+      const canciones = await pool.query(
+        'SELECT id, title AS nombre FROM songs WHERE title ILIKE $1',
+        [termino]
+      );
+      resultados = canciones.rows.map(c => ({ tipo: 'cancion', ...c }));
+
+    // Solo ÁLBUMES
+    } else if (filtro === 'album') {
+      const albumes = await pool.query(
+        'SELECT id, name AS nombre FROM albums WHERE name ILIKE $1',
+        [termino]
+      );
+      resultados = albumes.rows.map(al => ({ tipo: 'album', ...al }));
+
+    // Sin filtro: buscar en todo
+    } else {
+      const [artistas, canciones, albumes] = await Promise.all([
+        pool.query('SELECT id, stage_name AS nombre FROM artists WHERE stage_name ILIKE $1', [termino]),
+        pool.query('SELECT id, title AS nombre FROM songs WHERE title ILIKE $1', [termino]),
+        pool.query('SELECT id, name AS nombre FROM albums WHERE name ILIKE $1', [termino])
+      ]);
+
+      resultados = [
+        ...artistas.rows.map(a => ({ tipo: 'artista', ...a })),
+        ...canciones.rows.map(c => ({ tipo: 'cancion', ...c })),
+        ...albumes.rows.map(al => ({ tipo: 'album', ...al }))
+      ];
+    }
+
+    res.json(resultados);
+  } catch (err) {
+    console.error('Error en la búsqueda:', err);
+    res.status(500).json({ error: 'Error interno al buscar.' });
+  }
+});
 
 
 
