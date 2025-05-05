@@ -85,7 +85,7 @@ INSERT INTO artists (stage_name, real_name, debut_year, monthly_listeners, photo
 ('Tommy Richman', 'Nombre Real Desconocido', 2023, 3000000, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.mystateline.com%2Fwp-content%2Fuploads%2Fsites%2F17%2F2024%2F11%2F6724f57c8dd436.10814311.jpeg%3Fw%3D1752%26h%3D986%26crop%3D1&f=1&nofb=1&ipt=df664f7f7e8a651f4696403f545adec683d620bd71cb60e2296d8550b07fdb7c'),
 ('Kendrick Lamar', 'Kendrick Lamar Duckworth', 2010, 40000000, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.dnaindia.com%2Fsites%2Fdefault%2Ffiles%2F2018%2F04%2F17%2F672869-kendrick-lamar-reuters.jpg&f=1&nofb=1&ipt=b5c3ee1c41583c31bc95bc18c2c4101bc7460655beaefbcbb91611e6f184624c'),
 ('Zach Bryan', 'Zachary Lane Bryan', 2016, 16000000, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2F6%2F69%2FZach_Bryan_2021.jpg&f=1&nofb=1&ipt=9bda73a9e78fe3ca99acaf12683ad10ccda56e3a30d9cfc30197e8f3a16e14a5'),
-('Olivia Rodrigo', 'Olivia Isabel Rodrigo', 2021, 110000000, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.billboard.com%2Fwp-content%2Fuploads%2F2021%2F06%2FOlivia-Rodrigo-Viral-Image-2021-billboard-1548-1024x1024.jpg&f=1&nofb=1&ipt=c38347d2b05b7a75a38c2c60b987c5e6f54bfaef21360acfe604a54c124d4049'),
+('Olivia Rodrigo', 'Olivia Isabel Rodrigo', 2021, 110000000, 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZ-gIXIrHPlQ_yrmcSqbcvvrQP1iE5eTAMB605ZTgR4cWRYPlDTW4aMcZ6reHXBJYoaMC5f2jVJ6zoCk_BPLT6Aw'),
 ('Ximena Sariñana', 'Ximena Sariñana Rivera', 2008, 3000000, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.laverdadnoticias.com%2Fassets%2Fimg%2F2022%2F05%2F24%2Fximena-sarinana-1684908131647.jpg&f=1&nofb=1&ipt=c3a25de6d3dfc2d3b3de4a9ebf7716a52e907f8a2c32b91b1cc53fae2b7a7f9d');
 
 INSERT INTO albums (name, release_date, artist_id, photo_url) VALUES
@@ -97,7 +97,7 @@ INSERT INTO albums (name, release_date, artist_id, photo_url) VALUES
 ( 'DECIDE', '2022-09-16', 7, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthemontclarion.org%2Fwp-content%2Fuploads%2F2022%2F10%2FIMG_6923.jpg&f=1&nofb=1&ipt=c3f94d9af29f38488f4439bc5f2a2dbc9c0f20f356bbee171649b2ff1324eb35'),
 ( 'Unreal Unearth', '2023-08-18', 8, 'https://m.media-amazon.com/images/I/81VulClq75L.jpg' ),
 ( 'The Idol Episode 4 (Music from the HBO Original Series)', '2023-06-23', 8, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fis1-ssl.mzstatic.com%2Fimage%2Fthumb%2FMusic116%2Fv4%2Fdb%2F28%2Fe7%2Fdb28e7c3-f53a-76c8-eaa4-d92a22e4f160%2F23UMGIM72115.rgb.jpg%2F1200x1200bf-60.jpg&f=1&nofb=1&ipt=b1af7e56394bb21ae2352b524b92913dc37b5a09d23743c53b2509afd620dd7c' ),
-( 'Lover', '2019-08-23', 12, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsuave.hn%2Fwp-content%2Fuploads%2F2019%2F08%2FAGAEH-1068x1068.jpg&f=1&nofb=1&ipt=a43d60e1f6db3a2f507c458e8ab9762d8edf2324dec6066e1d57fb9d281202d5'),
+( 'Lover', '2019-08-23', 11, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsuave.hn%2Fwp-content%2Fuploads%2F2019%2F08%2FAGAEH-1068x1068.jpg&f=1&nofb=1&ipt=a43d60e1f6db3a2f507c458e8ab9762d8edf2324dec6066e1d57fb9d281202d5'),
 ( 'Die With A Smile (Single)', '2024-02-01', 13, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.scdn.co%2Fimage%2Fab67616d0000b27335b56028ff1b13347a8aa5b6&f=1&nofb=1&ipt=b5ad3a3c006db044bc4d9da1b67c1c7cdf96408285de85083125d1549873ecfe' ),
 ( 'A Bar Song (Tipsy) (Single)', '2024-03-22', 15 , 'https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/72/1c/92/721c9211-2be5-4614-2ca3-28d55b0b5d88/197342837156_cover.jpg/600x600bf-60.jpg'),
 ( 'I Had Some Help (Single)', '2024-05-10', 16, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fe.snmc.io%2Fi%2F600%2Fs%2Fc1c007be7614500aade6327daec5d9c3%2F12342420%2Fgoldfinger-and-less-than-jake-i-had-some-help-Cover-Art.jpg&f=1&nofb=1&ipt=00a32bd8485dcdcdf393eddfdc6943b37f526e7904bb98028c70118f4e63b399'),
@@ -139,7 +139,7 @@ VALUES
 -- 8
 ('One Of The Girls', 2024, 'R&B', 1100000000, 8, 9, 'The Weeknd colabora con JENNIE y Lily Rose Depp en una pista sensual.', 'https://youtu.be/Mx92lTYxrJQ?feature=shared'),
 -- 9
-('Cruel Summer', 2024, 'Pop', 1000000000, 9, 12, 'Taylor Swift revive un clásico con una nueva energía.', 'https://youtu.be/ic8j13piAhQ?si=qfJRv5hwQimwRoDE'),
+('Cruel Summer', 2024, 'Pop', 1000000000, 9, 11, 'Taylor Swift revive un clásico con una nueva energía.', 'https://youtu.be/ic8j13piAhQ?si=qfJRv5hwQimwRoDE'),
 -- 10
 ('Die With A Smile', 2024, 'Pop', 900000000, 10, 13, 'Bruno Mars y Lady Gaga unen fuerzas en una canción vibrante.', 'https://youtu.be/kPa7bsKwL-c?feature=shared'),
 -- 11
@@ -169,7 +169,7 @@ VALUES
 -- 23
 ('Paint the Town Red', 2024, 'Hip-Hop', 250000000, 23, 26, 'Doja Cat regresa con un tema vibrante y atrevido.', 'https://youtu.be/m4_9TFeMfJE?feature=shared'),
 -- 24
-('Fortnight', 2024, 'Pop', 200000000, 24, 12, 'Taylor Swift y Post Malone colaboran en una balada conmovedora.', 'https://youtu.be/q3zqJs7JUCQ?feature=shared'),
+('Fortnight', 2024, 'Pop', 200000000, 24, 11, 'Taylor Swift y Post Malone colaboran en una balada conmovedora.', 'https://youtu.be/q3zqJs7JUCQ?feature=shared'),
 -- 25
 ('Water', 2024, 'Afrobeat', 150000000, 25, 29, 'Tyla presenta un ritmo refrescante y bailable.', 'https://youtu.be/XoiOOiuH8iI?feature=shared'),
 -- 26
@@ -179,7 +179,7 @@ VALUES
 -- 28
 ('Vampire',2024, 'Pop', 90000000, 28, 34, 'Olivia Rodrigo lanza un tema emocional y poderoso.', 'https://youtu.be/RlPNh_PBZb4?feature=shared'),
 -- 29
-('Cruel Summer (Taylor''s Version)', 2024, 'Pop', 85000000, 8, 12, 'Taylor Swift lanza una nueva versión de su éxito.', 'https://youtu.be/ic8j13piAhQ?si=evPJKrtfEdJ8J0T9');
+('Cruel Summer (Taylor''s Version)', 2024, 'Pop', 85000000, 8, 11, 'Taylor Swift lanza una nueva versión de su éxito.', 'https://youtu.be/ic8j13piAhQ?si=evPJKrtfEdJ8J0T9');
 
 -- USUARIOS
 INSERT INTO users (name, email, password, registration_date) VALUES

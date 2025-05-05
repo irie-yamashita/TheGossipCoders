@@ -48,13 +48,34 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            resultados.innerHTML = data.map(item => `
-                <li>
-                    <a href="detalle_${item.tipo}.html?id=${item.id}">
-                        <strong>${item.nombre}</strong> <em>(${item.tipo})</em>
-                    </a>
-                </li>
-            `).join("");
+            resultados.innerHTML = data.map(item => {
+                let detalleUrl = '';
+            
+                // Verifica si el tipo es artista o canción, pero no para álbum
+                if (item.tipo === 'artista') {
+                    detalleUrl = `detalle_artistas.html?id=${item.id}`;
+                } else if (item.tipo === 'cancion') {
+                    detalleUrl = `detalle_cancion.html?id=${item.id}`;
+                }
+            
+                // Si no es artista ni canción (por ejemplo, un álbum), no genera enlace
+                if (!detalleUrl) {
+                    return `
+                        <li>
+                            <strong>${item.nombre}</strong> <em>(${item.tipo})</em>
+                        </li>
+                    `;
+                }
+            
+                return `
+                    <li>
+                        <a href="${detalleUrl}">
+                            <strong>${item.nombre}</strong> <em>(${item.tipo})</em>
+                        </a>
+                    </li>
+                `;
+            }).join("");
+            
 
         } catch (err) {
             console.error(err);
