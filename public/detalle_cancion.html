@@ -21,27 +21,39 @@
         </nav>
     </header>
     <div>
-        <h2>Maps</h2>
-        <img src="img/mapsCancion.jpg" id="img_cancion" alt="foto del video maps">
+        <h2 id="titulo">Maps</h2>
+        <main class="flex-row center">
+            <div id="video-container">
+                <!-- Aquí se insertará el iframe si hay clip_url -->
+            </div>
+
+            <div id="info">
+                <h3>Genero:</h3>
+                <p id="genero">DEFAULT</p>
+    
+                <h3>Artista:</h3>
+                <a id="link-artista" href="#">DEFAULT</a>
+    
+                <h3>Released</h3>
+                <p id="release-year"></p><br><br>
+            </div>
+
+        </main>
         <section>
-            <h3>Genero:</h3>
-            <p>Alternative/Indie, Rock</p>
-            <h3>Artista:</h3>
-            <a href="detalle_artistas.html">Yeah Yeah Yeahs</a>
-            <h3>Released: 2003</h3><br><br>
+
             <h3 id="historia_titu">Historia</h3>
-            <p>Todo empezó en entre el 2001 y 2002, cuando el trío neoyorquino lanzó dos EP’s; uno homónimo y otro
+            <hr>
+            <p id="historia">Todo empezó en entre el 2001 y 2002, cuando el trío neoyorquino lanzó dos EP’s; uno homónimo y otro
                 titulado Machine. El éxito llegó muy rápido para la banda provocando así que tuvieran que salir de gira
                 para promocionar sus canciones. En dicho tour, los Yeah Yeah Yeahs fueron acompañados por Liars, una
                 banda australiana liderada por Angus Andrew, quien tiempo después se hizo novio de Karen O.</p>
-            <p>El grupo conformado también por el guitarrista Nick Zinner y el baterista Brian Chase, además de tener
-                canciones bien ‘garage rock’, tenía una muy melancólica que marcó a toda una generación en México que,
-                sin entender bien su letra, pensaron que se trataba de amor y hasta empezaron a dedicarla a sus parejas.
-            </p>
-            <p>¿Ya sabes de cuál hablamos? Sí, de ‘Maps’. Esa rola que te hace mover la cabeza y las manos como si
-                estuvieras tocando la batería. </p>
+            <p>
 
+        </section>
+
+        <section>
             <h3>Letra: </h3>
+            <hr>
             <p>
                 OverviewLyricsListenArtists
                 Lyrics
@@ -84,14 +96,12 @@
         </section>
 
         <section id="albumes_po">
-            <h3>Álbum: Fever To Tell</h3>
-            <img src="img/Yeah_Yeah_Yeahs_-_Fever_to_Tell.png">
+            <h3 id="album-nombre">Álbum: Fever To Tell</h3>
+            <img  id="album-img" src="img/Yeah_Yeah_Yeahs_-_Fever_to_Tell.png">
         </section>
         <section id="estadisticas">
-            <h2>Estadistcas</h2>
-            <ul>
-                <li>Número de repoduciones:</li>
-            </ul>
+            <h3>Estadistcas</h3>
+            <p id="reproducciones">Número de reproducciones: DEFAULT</p>
         </section>
     </div>
     <footer>
@@ -106,5 +116,87 @@
         </div>
     </footer>
 </body>
-
 </html>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+const songId = params.get('id');
+
+if (songId) {
+  fetch(`/api/songs?id=${songId}`)
+    .then(res => {
+      if (!res.ok) throw new Error('No se pudo obtener la canción');
+      return res.json();
+    })
+    .then(async ([song]) => {
+      // Rellenar campos básicos
+      document.getElementById('titulo').textContent = song.title || 'DEFAULT';
+      document.getElementById('genero').textContent = song.genre || 'DEFAULT';
+      document.getElementById('release-year').textContent = `${song.release_year || 'DEFAULT'}`;
+      document.getElementById('historia').innerHTML = song.story
+        ? `<p>${song.story}</p>`
+        : '<p>DEFAULT</p>';
+
+      document.getElementById('reproducciones').innerHTML = `Número de reproducciones: <strong>${song.play_count?.toLocaleString('es-ES') || 'DEFAULT'}</strong>`;
+
+      // Obtener datos de artista
+      const artistaLink = document.getElementById('link-artista');
+      if (song.artist_id) {
+        const artistaRes = await fetch(`/api/artists?id=${song.artist_id}`);
+        const artista = await artistaRes.json();
+        artistaLink.textContent = artista[0]?.stage_name || 'DEFAULT';
+        artistaLink.href = `detalle_artistas.html?id=${song.artist_id}`;
+      } else {
+        artistaLink.textContent = 'DEFAULT';
+        artistaLink.href = '#';
+      }
+
+      // Obtener datos del álbum
+      if (song.album_id) {
+        const albumRes = await fetch(`/api/albums?id=${song.album_id}`);
+        const album = await albumRes.json();
+        document.getElementById('album-nombre').textContent = `Álbum: ${album[0]?.name || 'DEFAULT'}`;
+        document.getElementById('album-img').src = album[0]?.photo_url || 'img/default_album.png';
+      } else {
+        document.getElementById('album-nombre').textContent = 'Álbum: DEFAULT';
+        document.getElementById('album-img').src = 'img/default_album.png';
+      }
+
+      const clipUrl = song.clip_url;
+
+    if (clipUrl && clipUrl.includes('youtube.com') || clipUrl.includes('youtu.be')) {
+    const videoId = extractYoutubeId(clipUrl);
+
+    if (videoId) {
+        const iframe = document.createElement('iframe');
+        iframe.width = "560";
+        iframe.height = "315";
+        iframe.src = `https://www.youtube.com/embed/${videoId}`;
+        iframe.title = "YouTube video player";
+        iframe.frameBorder = "0";
+        iframe.allow =
+        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+        iframe.allowFullscreen = true;
+
+        document.getElementById('video-container').appendChild(iframe);
+    }
+    }
+
+    })
+    .catch(err => {
+      console.error('Error al cargar la canción:', err);
+      document.body.innerHTML = '<p>Error al cargar los detalles de la canción.</p>';
+    });
+} else {
+  document.body.innerHTML = '<p>ID de canción no especificado en la URL.</p>';
+}
+
+
+function extractYoutubeId(url) {
+  const regExp =
+    /^.*(youtu\.be\/|v=|\/embed\/|shorts\/)([^#&?]*).*/;
+  const match = url.match(regExp);
+  return match && match[2].length === 11 ? match[2] : null;
+}
+
+</script>
