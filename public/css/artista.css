@@ -176,3 +176,26 @@ footer {
     color: black;
 }
 
+h4 {
+    color: white;
+}
+h3 {
+    color: #00ffe5;
+    border-bottom: #00ffe5 1px solid;
+    margin-bottom: 20px;
+}
+section {
+    margin-bottom: 30px;
+}
+ul {
+    list-style: none;
+    padding-left: 1rem;
+}
+
+li {
+    background-color: #1f1f1f;
+    margin-bottom: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 255, 229, 0.1);
+}

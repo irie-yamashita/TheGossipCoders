@@ -70,7 +70,7 @@ if (id) {
         const a = document.createElement('a');
         a.href = `detalle_cancion.html?id=${song.id}`;
 
-        const h3 = document.createElement('h3');
+        const h3 = document.createElement('h4');
         h3.textContent = song.title;
 
         a.appendChild(h3);
@@ -103,7 +103,7 @@ if (id) {
         const img = document.createElement('img');
         img.src = album.photo_url;
 
-        const h3 = document.createElement('h3');
+        const h3 = document.createElement('h4');
         h3.textContent = album.name;
 
         li.appendChild(img);
