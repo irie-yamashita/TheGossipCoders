@@ -1,34 +1,5 @@
+
 /* Reset básico */
-
-#portada {
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    padding: 50px;
-    margin-top: 50px;
-
-    width: 100%;
-}
-
-#portada p,  #portada strong{
-    font-size: 5rem;
-    line-height: 1;
-
-    font-weight: bolder;
-    animation: imperfecto 3s ease-in-out infinite;
-
-}
-
-@keyframes imperfecto {
-    0% { transform: scale(1); } /* Tamaño normal */
-    50% { transform: scale(1.01 ); } /* Agrandarse un poco */
-    100% { transform: scale(1); } /* Volver a tamaño normal */
-  }
-
-
 * {
     margin: 0;
     padding: 0;
@@ -49,10 +20,6 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-strong {
-    color: #00ffe5;
-}
-
 nav {
     display: flex;
     justify-content: space-between;
@@ -66,21 +33,32 @@ nav h2 {
 }
 
 nav a {
+    display: flex;
+    width: 100px;
     color: #ffffff;
     text-decoration: none;
-    margin-left: 1.5rem;
+    margin-left: 1rem;
     font-weight: 500;
     transition: color 0.3s ease;
+    justify-content: center;
+    align-items: center;
 }
 
 nav a:hover {
     color: #00ffe5;
 }
 
+#enlancesNav{
+    width: 600px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin: 20px;
+}
+
 /* Secciones principales */
 section {
     padding: 2rem;
-    width: 100%;
 }
 
 section h2 {
@@ -92,34 +70,10 @@ section h2 {
     width: 400px;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-
-    flex-wrap: wrap;
-
-}
-
-.column {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-
-    flex-wrap: wrap;
-}
-
-.center {
-    justify-content: center;
-    align-items: center;
-    
-}
-
-.quadrat {
+#artistas_container > div,
+#canciones_container > div,
+#albumes_container > div {
     display: inline-block;
-    justify-content: center;
-    
     background: #1f1f1f;
     margin: 1rem;
     padding: 1rem;
@@ -130,32 +84,10 @@ section h2 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.rectangle {
-    display: inline-block;
-    justify-content: center;
-    
-    background: #1f1f1f;
-    margin: 1rem;
-    padding: 1rem;
-    border-radius: 10px;
-    text-align: center;
-    width: 45%;
-    box-shadow: 0 4px 8px rgba(0, 255, 229, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-button {
-    width: 200px;
-    padding: 10px;
-    margin: 20px;
-}
-
-button:hover {
-    transform: scaleX(5px);
-    box-shadow: 0 6px 12px rgba(0, 255, 229, 0.3);
-}
-
-section div:hover {
+/* Hover solo para cada tarjeta individual */
+#artistas_container > div:hover,
+#canciones_container > div:hover,
+#albumes_container > div:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 255, 229, 0.3);
 }
@@ -170,6 +102,32 @@ img {
     object-fit: cover;
     border-radius: 8px;
     background: #333; /* fondo temporal si no hay imagen */
+}
+
+/* CSS para el botón de la flecha */
+.arrow-button {
+    margin-top: 20px;
+    background-color: transparent;
+    border: 2px solid #00ffe5;
+    color: #00ffe5;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.arrow-button:hover {
+    background-color: #00ffe5;
+    color: #121212;
+    transform: translateY(-5px); /* Efecto de elevación */
+}
+
+.arrow-button i {
+    margin-left: 8px; /* Espacio entre el texto y el ícono */
 }
 
 /*footer*/
@@ -200,4 +158,110 @@ footer {
     color: #00ffe5;
 }
 
+
+#portada {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px;
+    margin-top: 50px;
+
+    width: 100%;
+}
+
+#portada button {
+    width: 200px;
+    padding: 15px;
+    margin: 20px;
+
+    border-radius: 20px;
+}
+
+#portada button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 255, 229, 0.3);
+}
+
+
+#portada p,  #portada strong{
+    font-size: 5rem;
+    line-height: 1;
+
+    font-weight: bolder;
+    animation: imperfecto 3s ease-in-out infinite;
+
+}
+
+@keyframes imperfecto {
+    0% { transform: scale(1); } /* Tamaño normal */
+    50% { transform: scale(1.01 ); } /* Agrandarse un poco */
+    100% { transform: scale(1); } /* Volver a tamaño normal */
+  }
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    flex-wrap: wrap;
+
+}
+
+.column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    flex-wrap: wrap;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+    
+}
+
+strong {
+    color: #00ffe5;
+}
+
+
+.quadrat {
+    display: inline-block;
+    justify-content: center;
+    
+    background: #1f1f1f;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 255, 229, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rectangle {
+    display: inline-block;
+    justify-content: center;
+    
+    background: #1f1f1f;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    width: 45%;
+    box-shadow: 0 4px 8px rgba(0, 255, 229, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 

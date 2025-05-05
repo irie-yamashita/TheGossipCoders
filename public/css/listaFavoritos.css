@@ -12,6 +12,7 @@ body {
     padding-bottom: 100px;
     line-height: 1.6;
 }
+
 /* Header y navegación */
 header {
     background: #1e1e1e;
@@ -62,100 +63,83 @@ nav a:hover {
     align-items: center;
     margin: 20px;
 }
-h1 {
+
+/*main*/
+
+h1{
     color: #00ffe5;
+    margin-bottom: 20px;
+}
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
-/*container*/
-#container {
-    max-width: 800px;
-    margin: 3rem auto;
-    padding: 0 1rem;
-    text-align: center;
-  }
-
-  #search{
-    width: 100%;
-    max-width: 500px;
-    padding: 0.8rem 1rem;
-    border: none;
-    border-radius: 30px;
-    margin-bottom: 1.5rem;
-    font-size: 1rem;
-    background-color: #1f1f1f;
-    color: #fff;
-  }
-
-  #search::placeholder {
-    color: #aaa;
-  }
-
-  select {
-    width: 50%;
-    max-width: 500px;
-    padding: 0.8rem 1rem;
-    border: none;
-    border-radius: 10px;
-    margin-bottom: 1.5rem;
-    font-size: 1rem;
-    background-color: #1f1f1f;
-    color: #fff;
-  }
-  select::placeholder {
-    color: #aaa;
-  }
-
-  #resultados {
+ul {
     list-style: none;
-    padding: 0;
-  }
+    padding-left: 1rem;
+ 
+}
 
-  #resultados li {
-    background: #1f1f1f;
-    margin: 0.5rem 0;
-    padding: 1rem;
+li {
+    width: 500px;
+    height: 80px;
+    background-color: #1f1f1f;
+    margin-bottom: 0.5rem;
+    padding: 0.75rem 1rem;
     border-radius: 8px;
-    text-align: left;
-  }
+    box-shadow: 0 2px 5px rgba(0, 255, 229, 0.1);
+}
 
-  #recomendados {
-    margin-top: 3rem;
-  }
-
-  #recomendados h2 {
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #00ffe5;
+a{
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
     display: inline-block;
-    padding-bottom: 5px;
-  }
-
-  #recomendados section {
-    display: inline-block;
-    background: #1f1f1f;
-    margin: 1rem;
-    padding: 1rem;
-    border-radius: 10px;
-    width: 250px;
-    box-shadow: 0 4px 8px rgba(0, 255, 229, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  #recomendados section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 255, 229, 0.3);
-  }
-
-  #recomendados a {
     color: white;
+    font-weight: bold;
     text-decoration: none;
-  }
 
-  #recomendados a:hover {
-    color: #00ffe5;
-  }
+}
+
+button{
+    font-weight: bold;
+    width: 100px;
+    margin: 20px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #00ffe5;
+    transition: color 0.3s ease;
+    border-color: #121212;
+    border-width: 3px;
+}
+
+button:hover{
+    background-color: red;
+}
+
+#favContainer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 2rem;
+}
+#favArtistas {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+}
 
 
-
+#favCanciones {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content:right;
+    align-items: center;
+}
 /*footer*/
 footer {
     background: #1e1e1e;
@@ -183,6 +167,3 @@ footer {
 .social-icons a:hover {
     color: #00ffe5;
 }
-
-
- 

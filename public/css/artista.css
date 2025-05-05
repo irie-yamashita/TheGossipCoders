@@ -44,15 +44,27 @@ nav h2 {
 }
 
 nav a {
+    display: flex;
+    width: 100px;
     color: #ffffff;
     text-decoration: none;
-    margin-left: 1.5rem;
+    margin-left: 1rem;
     font-weight: 500;
     transition: color 0.3s ease;
+    justify-content: center;
+    align-items: center;
 }
 
 nav a:hover {
     color: #00ffe5;
+}
+
+#enlancesNav{
+    width: 600px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin: 20px;
 }
 
 /* Contenido principal */
@@ -84,59 +96,39 @@ p {
 }
 
 /* Secciones de canciones y álbumes */
+a{
+    text-decoration: none;
+}
 #canciones_po {
     margin-top: 2rem;
 }
 
-#canciones_po h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #00ffe5;
-    display: inline-block;
-    padding-bottom: 0.5rem;
+#canciones_po p {
+   
+    position: relative;
     color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
     transition: color 0.3s ease;
 }
 
-#canciones_po h3:hover {
-  
-    color: 2px solid #00ffe5;
-   
+#canciones_po p::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: -5px;
+    background-color: #00ffe5;
+    transition: width 0.3s ease;
 }
 
-#albumes_po{
-
-    margin-top: 2rem;
+#canciones_po p:hover {
+    color: #00ffe5;
 }
 
-#albumes_po img{
-
-    width: 200px;
-    max-width: 300px;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 1rem;
-    display: block;
-}
-
-#albumes_po h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    display: inline-block;
-    padding-bottom: 0.5rem;
-}
-
-ul {
-    list-style: none;
-    padding-left: 1rem;
-}
-
-li {
-    background-color: #1f1f1f;
-    margin-bottom: 0.5rem;
-    padding: 0.75rem 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 255, 229, 0.1);
+#canciones_po p:hover::after {
+    width: 100%;
 }
 
 /*footer*/
@@ -165,5 +157,22 @@ footer {
 
 .social-icons a:hover {
     color: #00ffe5;
+}
+
+#favBtn {
+    background-color: #1e1e1e;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s;
+}
+
+#favBtn:hover {
+    background-color: #00ffe5;
+    color: black;
 }
 
